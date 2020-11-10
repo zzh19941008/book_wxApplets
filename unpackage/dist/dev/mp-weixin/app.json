@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/user/user",
+    "pages/collect/collect"
   ],
   "subPackages": [],
   "window": {
@@ -9,6 +11,27 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "tabBar": {
+    "list": [
+      {
+        "iconPath": "static/icon/book.png",
+        "selectedIconPath": "static/icon/book1.png",
+        "pagePath": "pages/index/index",
+        "text": "书籍"
+      },
+      {
+        "iconPath": "static/icon/sc.png",
+        "selectedIconPath": "static/icon/sc1.png",
+        "pagePath": "pages/collect/collect",
+        "text": "收藏"
+      },
+      {
+        "iconPath": "static/icon/my.png",
+        "selectedIconPath": "static/icon/my1.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
 }

@@ -1,21 +1,56 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+	<view>
+		<!-- 顶部菜单 -->
+	     <view class="top">
+			 <view>
+				<text>分类</text>
+				<van-icon name="arrow-down" />
+			 </view>
+			 <view>
+			 	<text>作者</text>
+			 	<van-icon name="arrow-down" />
+			 </view>
+			 <view>
+			 	<text>价格</text>
+			 	<van-icon name="arrow-down" />
+			 </view>
+			 <view style="padding:0; width: 40%;">
+				 <van-search
+				   custom-class="search"
+				   value="" placeholder="书籍名" 
+				 />
+			 </view>
+		 </view>
+		 <scroll-view scroll-y="true" :style="{'height':windowHeight-36+'px','margin-top':'36px'}">
+			 <van-card v-for="i in 30" :key="i"
+			   tag="标签"
+			   price="10.00"
+			   desc="描述信息"
+			   title="商品标题"
+			   thumb="https://bookpic.lrts.me/27ae72ad5de748bca5858f910eb413a6_112x150.jpeg"
+			 >
+			 </van-card>
+		 </scroll-view>
 	</view>
 </template>
 
 <script>
+	var pageObj;
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				windowWidth: 0,
+				windowHeight:0
 			}
 		},
 		onLoad() {
-
+			pageObj=this;
+			uni.getSystemInfo({
+				success: function (res) {
+					pageObj.windowWidth=res.windowWidth;
+					pageObj.windowHeight=res.windowHeight;
+				}
+			});
 		},
 		methods: {
 
@@ -24,29 +59,5 @@
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+	@import '@/static/css/index.css';
 </style>

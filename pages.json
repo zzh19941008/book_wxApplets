@@ -3,14 +3,57 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "uni-app",
+				"usingComponents":{
+					"van-icon": "/wxcomponents/vant/icon/index",
+					"van-card": "/wxcomponents/vant/card/index",
+					"van-search": "/wxcomponents/vant/search/index",
+					 "van-checkbox": "/wxcomponents/vant/checkbox/index",
+					 "van-checkbox-group": "/wxcomponents/vant/checkbox-group/index"
+			
+				}
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/user/user",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/collect/collect",
+            "style": {
+				"usingComponents":{
+					 "van-checkbox": "/wxcomponents/vant/checkbox/index",
+					 "van-checkbox-group": "/wxcomponents/vant/checkbox-group/index"
+				}
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar":{
+		"list":[
+			{
+				"iconPath":"static/icon/book.png",
+				"selectedIconPath":"static/icon/book1.png",
+				"pagePath":"pages/index/index",
+				"text":"书籍"
+			},
+			{
+				"iconPath":"static/icon/sc.png",
+				"selectedIconPath":"static/icon/sc1.png",
+				"pagePath":"pages/collect/collect",
+				"text":"收藏"
+			},
+			{
+				"iconPath":"static/icon/my.png",
+				"selectedIconPath":"static/icon/my1.png",
+				"pagePath":"pages/user/user",
+				"text":"我的"
+			}
+		]
 	}
 }

@@ -1,4 +1,10 @@
 {
   "navigationBarTitleText": "uni-app",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-icon": "/wxcomponents/vant/icon/index",
+    "van-card": "/wxcomponents/vant/card/index",
+    "van-search": "/wxcomponents/vant/search/index",
+    "van-checkbox": "/wxcomponents/vant/checkbox/index",
+    "van-checkbox-group": "/wxcomponents/vant/checkbox-group/index"
+  }
 }
