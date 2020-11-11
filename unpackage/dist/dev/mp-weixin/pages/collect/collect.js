@@ -175,18 +175,51 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
     return {
-      manage: true,
-      checked: false };
-
-
+      manage: false,
+      checked: false,
+      result: [], //存储选中的数据
+      list: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] //总数据包
+    };
   },
   methods: {
     change: function change() {
+      //this.checked==true 全选，false放弃全选
+
       this.checked = !this.checked;
+      if (this.checked) {//全选
+        this.result = new Array().concat(this.list);
+      } else {//放弃
+        this.result = []; //清空
+      }
+    },
+    changeCollect: function changeCollect(i) {
+      //找一下数组中是否存在该元素
+      //数组.indexOf(元素)——判断数组是否包含该元素，包含返回!-1,不包含返回-1
+      //返回的是一个下标
+      var index = this.result.indexOf(i);
+      if (index != -1) {//存在
+        //splice移除： 数组.splice(从那个下标开始,完后数几个元素【包含自身】)
+        this.result.splice(index, 1);
+        this.checked = false;
+      } else {//不存在
+        //插入
+        this.result.push(i);
+        //result和list内容一致时候——全选
+        if (this.result.length == this.list.length) {
+          this.checked = true;
+        }
+      }
+    },
+    link: function link() {
+      console.log('跳转');
+    },
+    removeList: function removeList() {
+
     } } };exports.default = _default;
 
 /***/ }),

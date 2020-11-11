@@ -5,6 +5,7 @@
     "van-card": "/wxcomponents/vant/card/index",
     "van-search": "/wxcomponents/vant/search/index",
     "van-checkbox": "/wxcomponents/vant/checkbox/index",
-    "van-checkbox-group": "/wxcomponents/vant/checkbox-group/index"
+    "van-checkbox-group": "/wxcomponents/vant/checkbox-group/index",
+    "van-overlay": "/wxcomponents/vant/overlay/index"
   }
 }

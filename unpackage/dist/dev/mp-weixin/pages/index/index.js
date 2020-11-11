@@ -166,13 +166,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var pageObj;var _default =
 {
   data: function data() {
     return {
       windowWidth: 0,
-      windowHeight: 0 };
+      windowHeight: 0,
+      show: false,
+      type: 0,
+      condition: {
+        boottype: 0, //记录分类编号
+        boottypeName: "分类" //记录分类名
+      } };
 
   },
   onLoad: function onLoad() {
@@ -184,7 +211,27 @@ var pageObj;var _default =
       } });
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    shoucang: function shoucang() {
+      console.log("shoucang");
+    },
+    xiangqing: function xiangqing() {
+      console.log("xiangqiang");
+    },
+    open: function open(type) {
+      this.show = true;
+      this.type = type;
+    },
+    hide: function hide() {
+      this.show = false;
+      this.type = 0;
+    },
+    changeBookType: function changeBookType(type, typeName) {
+      this.condition.boottype = type; //更改记录分类编号
+      this.condition.boottypeName = typeName; //更记录的分类名字
+      this.show = false; //关闭遮罩
+      this.type = 0; //收起下拉
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
