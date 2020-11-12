@@ -36,10 +36,12 @@
 			<view @click="open(2)">
 				<text>作者</text>
 				<van-icon v-if="type!=2" name="arrow-down" />
+				<van-icon v-else name="arrow-up" />
 			</view>
 			<view @click="open(3)">
 				<text>价格</text>
 				<van-icon v-if="type!=3" name="arrow-down" />
+				<van-icon v-else name="arrow-up" />
 			</view>
 			<view style="padding:0; width: 40%;">
 				<van-search custom-class="search" value="" placeholder="书籍名" />
@@ -72,12 +74,8 @@
 		},
 		onLoad() {
 			pageObj = this;
-			uni.getSystemInfo({
-				success: function(res) {
-					pageObj.windowWidth = res.windowWidth;
-					pageObj.windowHeight = res.windowHeight;
-				}
-			});
+			this.windowWidth=uni.getStorageSync("windowWidth")
+			this.windowHeight=uni.getStorageSync("windowHeight")
 		},
 		methods: {
 			shoucang() {

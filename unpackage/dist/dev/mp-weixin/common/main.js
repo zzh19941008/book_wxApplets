@@ -97,21 +97,12 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
   onLaunch: function onLaunch() {
-    //全局获取用户信息
-    uni.getUserInfo({
-      "lang": "zh_CN",
-      "timeout": 2000,
-      success: function success(result) {//如果成功
-        //将用户信息存储缓存内
-        uni.setStorageSync('userInfo', JSON.stringify(result.userInfo));
-      },
-      fail: function fail(err) {//如果失败
-        //跳转授权界面授权
-        uni.navigateTo({
-          url: "/pages/userinfo/userinfo" });
-
+    //获取设备信息
+    uni.getSystemInfo({
+      success: function success(res) {
+        uni.setStorageSync("windowWidth", res.windowWidth);
+        uni.setStorageSync("windowHeight", res.windowHeight);
       } });
-
 
   },
   onShow: function onShow() {

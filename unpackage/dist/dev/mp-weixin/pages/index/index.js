@@ -187,6 +187,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 var pageObj;var _default =
 {
@@ -204,12 +206,8 @@ var pageObj;var _default =
   },
   onLoad: function onLoad() {
     pageObj = this;
-    uni.getSystemInfo({
-      success: function success(res) {
-        pageObj.windowWidth = res.windowWidth;
-        pageObj.windowHeight = res.windowHeight;
-      } });
-
+    this.windowWidth = uni.getStorageSync("windowWidth");
+    this.windowHeight = uni.getStorageSync("windowHeight");
   },
   methods: {
     shoucang: function shoucang() {

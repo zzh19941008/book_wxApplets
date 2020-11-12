@@ -11,13 +11,16 @@
 					 "van-checkbox": "/wxcomponents/vant/checkbox/index",
 					 "van-checkbox-group": "/wxcomponents/vant/checkbox-group/index",
 					 "van-overlay": "/wxcomponents/vant/overlay/index"
-			
 				}
 			}
 		}
 	    ,{
             "path" : "pages/user/user",
-            "style" : {}
+            "style" : {
+				"usingComponents":{
+					"van-icon": "/wxcomponents/vant/icon/index"
+				}
+			}
         }
         ,{
             "path" : "pages/collect/collect",
@@ -30,12 +33,13 @@
         }
         ,{
             "path" : "pages/address/address",
-            "style" : {}
+            "style" : {
+				"usingComponents":{
+					"van-field": "/wxcomponents/vant/field/index"
+				}
+			}
         }
-        ,{
-            "path" : "pages/userinfo/userinfo",
-            "style" : {}
-        }
+       
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

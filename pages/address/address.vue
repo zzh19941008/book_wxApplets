@@ -1,22 +1,76 @@
 <template>
-	<view>
-		
+    <view class="addressbody">
+		<scroll-view :style="{'height':(windowHeight*0.9)+'px'}">
+			<view class="address">
+				<view class="address-left">
+					<view class="biaoqian1"></view>
+				</view>
+				<view class="address-center">
+					<view>
+						<text>张先生</text>
+						<text style="font-size: 10px; color: gray; margin-left: 3px;">18660100373</text>
+					</view>
+					<view>
+						<text class="default">默认</text>
+						<text class="biao2">家</text>
+						<text>山东省济南市槐荫区段店北路街道闫千户小区</text>
+					</view>
+				</view>
+				<view class="address-right">
+					<view style="border-left: 2rpx solid gray; color: gray; padding: 3px 0px;
+					display: inline-block;width: 100%;text-align: center;">
+						编辑
+					</view>
+				</view>
+			</view>
+			<view class="address">
+				<view class="address-left">
+					<view class="biaoqian2"></view>
+				</view>
+				<view class="address-center">
+					<view>
+						<text>张先生</text>
+						<text style="font-size: 10px; color: gray; margin-left: 3px;">18660100373</text>
+					</view>
+					<view>
+						<text class="biao2">公司</text>
+						<text>山东省济南市槐荫区段店北路街道闫千户小区</text>
+					</view>
+				</view>
+				<view class="address-right">
+					<view style="border-left: 2rpx solid gray; color: gray; padding: 3px 0px;
+					display: inline-block;width: 100%;text-align: center;">
+						编辑
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+		<view class="insertAddress" :style="{'height':(windowHeight*0.1)+'px'}">
+			<button type="warn">+ 添加新地址</button>
+		</view>
 	</view>
 </template>
 
 <script>
+	var pageObj;
 	export default {
 		data() {
 			return {
-				
+				windowWidth:0,
+				windowHeight:0
 			}
 		},
 		methods: {
 			
+		},
+		onLoad() {
+			pageObj = this;
+			this.windowWidth=uni.getStorageSync("windowWidth")
+			this.windowHeight=uni.getStorageSync("windowHeight")
 		}
 	}
 </script>
 
 <style>
-
+	@import '@/static/css/index.css';
 </style>

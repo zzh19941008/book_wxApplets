@@ -141,6 +141,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -149,14 +171,34 @@ var _default =
 
   },
   methods: {
-    link: function link() {
-      //跳转授权界面授权
+    getuserinfo: function getuserinfo(result) {
+      console.log(result.detail.userInfo);
+      if (result.detail.userInfo) {
+        //将用户信息存储缓存内
+        uni.setStorageSync('userInfo', JSON.stringify(result.detail.userInfo));
+        this.userinfo = result.detail.userInfo;
+      } else {
+        uni.setStorageSync('userInfo', "");
+      }
+    },
+    linkto: function linkto() {
       uni.navigateTo({
-        url: "/pages/userinfo/userinfo" });
+        url: "/pages/address/address" });
 
+    },
+    swicthTo: function swicthTo(url) {
+      uni.switchTab({
+        url: url });
+
+    },
+    logout: function logout() {
+      //请了缓存
+      uni.removeStorageSync("userInfo");
+      this.userinfo = "";
     } },
 
-  onShow: function onShow() {
+
+  onLoad: function onLoad() {
     var usinfo = uni.getStorageSync("userInfo");
     if (usinfo != "") {
       this.userinfo = JSON.parse(usinfo);
