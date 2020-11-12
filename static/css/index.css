@@ -129,3 +129,9 @@
 	background-color: #F9273F;
 	color: #FFFFFF;
 }
+
+/* 用户页面 */
+
+.userBody{
+	background-color: rgb(230,230,230);
+}

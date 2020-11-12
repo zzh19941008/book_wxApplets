@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/user/user",
-    "pages/collect/collect"
+    "pages/collect/collect",
+    "pages/address/address",
+    "pages/userinfo/userinfo"
   ],
   "subPackages": [],
   "window": {
@@ -33,5 +35,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap97.json"
 }

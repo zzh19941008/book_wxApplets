@@ -94,10 +94,25 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
   onLaunch: function onLaunch() {
-    console.log('App Launch');
+    //全局获取用户信息
+    uni.getUserInfo({
+      "lang": "zh_CN",
+      "timeout": 2000,
+      success: function success(result) {//如果成功
+        //将用户信息存储缓存内
+        uni.setStorageSync('userInfo', JSON.stringify(result.userInfo));
+      },
+      fail: function fail(err) {//如果失败
+        //跳转授权界面授权
+        uni.navigateTo({
+          url: "/pages/userinfo/userinfo" });
+
+      } });
+
+
   },
   onShow: function onShow() {
     console.log('App Show');
@@ -105,6 +120,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   onHide: function onHide() {
     console.log('App Hide');
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 8 */
