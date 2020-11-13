@@ -199,22 +199,31 @@ var pageObj;var _default =
       show: false,
       type: 0,
       condition: {
-        boottype: 0, //记录分类编号
-        boottypeName: "分类" //记录分类名
-      } };
-
+        booktypeid: "", //记录分类编号
+        boottypeName: "分类", //记录分类名
+        bookauthorid: "", //记录作者编号
+        moneyStart: "", //记录价格区间
+        moneyEnd: "" //记录价格区间
+      },
+      page: 1,
+      array: [], //书籍数据包
+      book_typeArray: [] //分类数据包
+    };
   },
   onLoad: function onLoad() {
     pageObj = this;
     this.windowWidth = uni.getStorageSync("windowWidth");
     this.windowHeight = uni.getStorageSync("windowHeight");
+    this.showLimit();
   },
   methods: {
     shoucang: function shoucang() {
       console.log("shoucang");
     },
     xiangqing: function xiangqing() {
-      console.log("xiangqiang");
+      uni.navigateTo({
+        url: "/pages/details/details" });
+
     },
     open: function open(type) {
       this.show = true;
@@ -225,10 +234,28 @@ var pageObj;var _default =
       this.type = 0;
     },
     changeBookType: function changeBookType(type, typeName) {
-      this.condition.boottype = type; //更改记录分类编号
+      this.condition.booktypeid = type; //更改记录分类编号
       this.condition.boottypeName = typeName; //更记录的分类名字
       this.show = false; //关闭遮罩
       this.type = 0; //收起下拉
+
+      this.showLimit();
+    },
+    showLimit: function showLimit() {
+      console.log(this.condition.booktypeid);
+      this.$axios.post(
+      "/book/showLimit",
+      {
+        condition: this.condition,
+        page: this.page,
+        pagesize: 10 }).
+
+      then(function (result) {
+        pageObj.array = result.data.array;
+        pageObj.book_typeArray = result.data.book_typeArray;
+      }).catch(function (err) {
+        console.log(err);
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

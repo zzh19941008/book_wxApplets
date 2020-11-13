@@ -10,7 +10,7 @@
 				<view class="type" v-show="type==1">
 					<view class="gonggebody">
 						 <view class="gongge" @click.stop="changeBookType(0,'分类')">
-							 <view v-if="condition.boottype==0" style="width: 30px; text-align: center; color:#D4237A;">
+							 <view v-if="condition.booktypeid==''" style="width: 30px; text-align: center; color:#D4237A;">
 							 	<image style="width: 30px; height: 30px;" src="../../static/icon/qb1.png" />
 							 	<text>全部</text>
 							 </view>
@@ -19,14 +19,14 @@
 							 	<text>全部</text>
 							 </view>
 						 </view>
-						 <view class="gongge" v-for="i in 10" :key="i" @click.stop="changeBookType(i+1,'文'+i)">
-							 <view v-if="condition.boottype==(i+1)" style="width: 30px; text-align: center; color:#D4237A;">
+						 <view class="gongge" v-for="(item,index) in book_typeArray" :key="index" @click.stop="changeBookType(item.typeid,item.typename)">
+							 <view v-if="condition.booktypeid==book_typeArray.typeid" style="width: 30px; text-align: center; color:#D4237A;">
 							 	<image style="width: 30px; height: 30px;" src="../../static/icon/book1.png" />
-							 	<text>文{{i}}</text>
+							 	<text>{{item.typename}}</text>
 							 </view>
 							 <view v-else style="width: 30px; text-align: center; color:#1296DB;">
 							 	<image style="width: 30px; height: 30px;" src="../../static/icon/book.png" />
-							 	<text>文{{i}}</text>
+							 	<text>{{item.typename}}</text>
 							 </view>
 						 </view>
 					</view>
@@ -48,8 +48,8 @@
 			</view>
 		</view>
 		<scroll-view scroll-y="true" :style="{'height':windowHeight-36+'px','margin-top':'36px'}">
-			<view v-for="i in 30" :key="i" @click="xiangqing()">
-				<van-card tag="标签" price="10.00" desc="描述信息" title="商品标题" thumb="https://bookpic.lrts.me/27ae72ad5de748bca5858f910eb413a6_112x150.jpeg">
+			<view v-for="(item,index) in array" :key="index" @click="xiangqing(item.bookid)">
+				<van-card tag="标签" :price="item.bookprice" desc="描述信息" :title="item.bookname" thumb="https://bookpic.lrts.me/27ae72ad5de748bca5858f910eb413a6_112x150.jpeg">
 				</van-card>
 			</view>
 		</scroll-view>
@@ -67,22 +67,31 @@
 				show: false,
 				type: 0,
 				condition: {
-					boottype: 0,//记录分类编号
-					boottypeName:"分类"//记录分类名
-				}
+					booktypeid:"",//记录分类编号
+					boottypeName:"分类",//记录分类名
+					bookauthorid:"",//记录作者编号
+					moneyStart:"",//记录价格区间
+					moneyEnd:""//记录价格区间
+				},
+				page:1,
+				array:[],//书籍数据包
+				book_typeArray:[]//分类数据包
 			}
 		},
 		onLoad() {
 			pageObj = this;
 			this.windowWidth=uni.getStorageSync("windowWidth")
 			this.windowHeight=uni.getStorageSync("windowHeight")
+			this.showLimit();
 		},
 		methods: {
 			shoucang() {
 				console.log("shoucang")
 			},
 			xiangqing() {
-				console.log("xiangqiang")
+				uni.navigateTo({
+					url:"/pages/details/details"
+				})
 			},
 			open(type) {
 				this.show = true
@@ -93,11 +102,30 @@
 				this.type = 0
 			},
 			changeBookType(type,typeName){	
-				this.condition.boottype=type//更改记录分类编号
+				this.condition.booktypeid=type//更改记录分类编号
 				this.condition.boottypeName=typeName //更记录的分类名字
 				this.show=false //关闭遮罩
 				this.type=0 //收起下拉
+			
+				this.showLimit();
+			},
+			showLimit(){
+				console.log(this.condition.booktypeid)
+				this.$axios.post(
+					"/book/showLimit",
+					{ 
+						condition:this.condition,
+						page:this.page,
+						pagesize:10
+					}
+				).then(function(result){
+					pageObj.array=result.data.array
+					pageObj.book_typeArray=result.data.book_typeArray
+				}).catch(function(err){
+					console.log(err)
+				})
 			}
+			
 			
 		}
 	}

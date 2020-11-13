@@ -1,0 +1,17 @@
+.top{
+	display: flex;
+	background-color:#2DB7F5;
+	padding:30rpx;
+}
+.top-left{
+	width: 60%;
+}
+.top-right{
+	width: 40%;
+	display: flex;
+	justify-content: flex-end;
+}
+.top-right>image{
+	width: 100px;
+	height:120px;
+}

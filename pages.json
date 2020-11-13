@@ -38,7 +38,13 @@
 					"van-field": "/wxcomponents/vant/field/index"
 				}
 			}
-        }
+        },
+		{
+		    "path" : "pages/details/details",
+		    "style":{
+				"navigationBarBackgroundColor":"#2DB7F5"
+			}
+		}
        
     ],
 	"globalStyle": {
